@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon: #121419;
+  --color-graphite: #1B1F27;
+  --color-steel: #2A303C;
+  --color-steel-light: #3A4150;
+  --color-bone: #ECE8E0;
+  --color-mute: #8B9099;
+  --color-ignition: #E6432E;
+  --color-ignition-dim: #7A2C22;
+  --color-signal: #4C8CA8;
+
+  --font-display: "Rajdhani", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--color-carbon);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-ignition);
+  color: var(--color-bone);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ignition);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px var(--color-steel-light);
+  color: transparent;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
